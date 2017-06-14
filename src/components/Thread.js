@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 
 class Thread extends Component {
   render () {
-    return (<p>{this.props.title}</p>);
+    return (
+      <div className="thread">
+        <h4>
+        { this.props.thumbnail.startsWith("http") ? <img src={this.props.thumbnail} /> : <span className="placeholder"/> }
+        <span>{this.props.title}</span>
+        </h4>
+      </div>
+    );
   }
 }
 

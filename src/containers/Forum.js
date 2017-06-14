@@ -30,7 +30,17 @@ class Forum extends Component {
     return (
       <div>
         <h2>The { this.props.params.forum_name } Subreddit</h2>
-        { this.state.threads.map((thread) => <Thread title={thread.data.title} />) }
+        <div className="threads-container">
+        {
+          this.state.threads.map((thread) => {
+            return (
+              <Thread
+                title={thread.data.title}
+                thumbnail={thread.data.thumbnail} />
+            )
+          })
+        }
+        </div>
       </div>
     );
   }
