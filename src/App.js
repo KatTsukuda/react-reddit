@@ -11,8 +11,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Reddit Abstractor</h2>
         </div>
-        <div><Link to="pancakes">Pancakes</Link></div>
-        <div><Link to="waffles">Waffles</Link></div>
+        <div><Link to="/pancakes">Pancakes</Link></div>
+        <div><Link to="/waffles">Waffles</Link></div>
         {this.props.children}
       </div>
     );

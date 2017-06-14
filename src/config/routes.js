@@ -5,6 +5,6 @@ import Forum from '../containers/Forum'
 
 export default (
   <Route path="/" component={App} >
-    <Route path="/pancakes" component={Forum} /> // nest subreddit forum within '/'
+    <Route path="/:name" component={Forum} /> // nest subreddit forum within '/'
   </Route>
 );
