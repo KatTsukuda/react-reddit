@@ -9,9 +9,9 @@ class App extends Component {
         <div className="App-header">
           <h1>Reddit Abstractor</h1>
           <ul>
-          <li><Link to="/pancakes">Pancakes</Link></li>
-          <li><Link to="/waffles">Waffles</Link></li>
+          <li><Link to="/corgis">Corgis</Link></li>
           <li><Link to="/pies">Pies</Link></li>
+          <li><Link to="/polarbears">Polar Bears</Link></li>
           </ul>
         </div>
         {this.props.children}
