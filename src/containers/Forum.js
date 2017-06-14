@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-
-class Thread extends Component {
-  render() {
-    return (<p>{this.props.title}</p>);
-  }
-}
+import Thread from '../components/Thread';
 
 class Forum extends Component {
   constructor(props) {
