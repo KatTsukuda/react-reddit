@@ -9,15 +9,21 @@ class Forum extends Component {
     threads: []
     }
   }
-  componentDidMount() {
-    $.get("https://www.reddit.com/r/pancakes.json")       // request json from reddit
+  fetchForumData() {
+    let subreddit = this.props.params.forum_name;
+    $.get(`https://www.reddit.com/r/${subreddit}.json`)       // request json from reddit
     .then((res) => {                // wait for response...
-      console.log('bublaban', res)
       this.setState({               // update internal state
         threads: res.data.children
       })
     }
     );
+  }
+  componentDidMount() {
+    this.fetchForumData();
+  }
+  componentWillReceiveProps() {
+    this.fetchForumData();
   }
   render() {
     return (
