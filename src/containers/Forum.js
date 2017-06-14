@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Thread from '../components/Thread';
-import $ from 'jquery-ajax';
+import ForumModel from '../models/ForumModel'
 
 class Forum extends Component {
   constructor(props) {
@@ -9,21 +9,22 @@ class Forum extends Component {
     threads: []
     }
   }
-  fetchForumData() {
-    let subreddit = this.props.params.forum_name;
-    $.get(`https://www.reddit.com/r/${subreddit}.json`)       // request json from reddit
-    .then((res) => {                // wait for response...
-      this.setState({               // update internal state
-        threads: res.data.children
-      })
+  fetchForumData(subreddit) {
+    ForumModel
+      .fetchThreads(subreddit)    // request json from reddit
+      .then(function(newThreads) {    // wait for response
+        this.setState({   // update internal state
+          threads: newThreads
+        })
+      }.bind(this));
     }
-    );
-  }
   componentDidMount() {
-    this.fetchForumData();
+    this.fetchForumData(this.props.params.forum_name);
   }
-  componentWillReceiveProps() {
-    this.fetchForumData();
+  componentWillReceiveProps(nextProps) {
+    // we can't use `this.props` because we do not want to see what the current/old forum_name is
+    // we want to see what CHANGED. That means we have to use nextProps instead.
+    this.fetchForumData(nextProps.params.forum_name);
   }
   render() {
     return (
