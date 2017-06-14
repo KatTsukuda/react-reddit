@@ -12,6 +12,7 @@ class App extends Component {
         </div>
         <div>pancakes</div>
         <div>waffles</div>
+        {this.props.children}
       </div>
     );
   }
